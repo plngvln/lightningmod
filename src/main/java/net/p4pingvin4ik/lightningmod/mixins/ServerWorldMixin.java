@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(ServerWorld.class)
 public class ServerWorldMixin {
     @ModifyConstant(
-            // ИЗМЕНЕНИЕ: Указываем правильный метод и его дескриптор
             method = "tickThunder(Lnet/minecraft/world/chunk/WorldChunk;)V",
             constant = @Constant(intValue = 100000)
     )

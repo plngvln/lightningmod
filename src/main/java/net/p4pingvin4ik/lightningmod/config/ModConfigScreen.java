@@ -9,22 +9,23 @@ import net.minecraft.text.Text;
 
 public class ModConfigScreen {
 
-    // Этот метод теперь можно вызывать через AutoConfig
     public static Screen create(Screen parent) {
+        // Получаем наш объект конфига
+        final ModConfig config = ModConfig.get();
+
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)
                 .setTitle(Text.translatable("title.lightningmod.config"));
 
-        // Указываем, что при сохранении нужно вызвать сохранение конфига AutoConfig
+        // При сохранении мы не можем просто сохранить `config`, т.к. это может быть временный объект.
+        // Нужно получить актуальный конфиг из AutoConfig и изменить его поля.
         builder.setSavingRunnable(() -> {
+
             AutoConfig.getConfigHolder(ModConfig.class).save();
         });
 
         ConfigCategory main = builder.getOrCreateCategory(Text.translatable("category.lightningmod.main"));
         ConfigEntryBuilder entryBuilder = builder.entryBuilder();
-
-        // Получаем наш объект конфига
-        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
         // Заменяем поле ввода на слайдер
         main.addEntry(entryBuilder.startIntSlider(

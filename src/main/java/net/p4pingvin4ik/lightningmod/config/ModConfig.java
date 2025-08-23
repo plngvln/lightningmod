@@ -2,6 +2,7 @@ package net.p4pingvin4ik.lightningmod.config;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
+import me.shedaniel.autoconfig.ConfigHolder;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.minecraft.client.gui.screen.Screen;
@@ -10,16 +11,32 @@ import net.minecraft.client.gui.screen.Screen;
 public class ModConfig implements ConfigData {
 
     public int lightningChance = 10000;
+    public double skeletonHorseChanceMultiplier = 1.0;
+    public boolean lightningInAllBiomes = false;
+
+    private static ModConfig INSTANCE = null;
+
 
     public static void register() {
-        AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
+        ConfigHolder<ModConfig> holder = AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
+
+        INSTANCE = holder.getConfig();
+
+        holder.registerSaveListener((h, config) -> {
+            INSTANCE = config;
+            return null;
+        });
     }
 
     public static ModConfig get() {
-        return AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+        // Если register() еще не был вызван, INSTANCE будет null.
+        if (INSTANCE == null) {
+            return new ModConfig();
+        }
+        // Если конфиг уже загружен, возвращаем актуальный экземпляр.
+        return INSTANCE;
     }
-    public double skeletonHorseChanceMultiplier = 1.0;
-    public boolean lightningInAllBiomes = false;
+
     public static Screen getConfigScreen(Screen parent) {
         return ModConfigScreen.create(parent);
     }

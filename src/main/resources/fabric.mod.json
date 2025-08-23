@@ -12,8 +12,8 @@
   "icon": "assets/lightningmod/icon.png",
   "environment": "*",
   "entrypoints": {
-    "client": [
-      "net.p4pingvin4ik.lightningmod.lightingclient"
+    "main": [
+      "net.p4pingvin4ik.lightningmod.LightningMod"
     ],
     "modmenu": [
       "net.p4pingvin4ik.lightningmod.LightningModMenuIntegration"
