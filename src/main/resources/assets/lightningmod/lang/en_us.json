@@ -8,6 +8,6 @@
   "option.lightningmod.skeleton_horse_chance": "Skeleton Trap Chance",
   "tooltip.lightningmod.skeleton_horse_chance": "Multiplier for the chance of a lightning strike spawning a skeleton horse trap.\n1.0 = Vanilla (100%), 0.5 = Half chance (50%), 0.0 = Disabled.",
 
-  "option.lightningmod.all_biomes": "Lightning in All Biomes",
-  "tooltip.lightningmod.all_biomes": "If enabled, lightning can strike in dry biomes\n(deserts, savannas, etc.) during a thunderstorm."
+  "option.lightningmod.all_biomes": "Rain & Lightning in Dry Biomes",
+  "tooltip.lightningmod.all_biomes": "If enabled, allows rain and thunderstorms to occur in biomes\nthat are normally dry (deserts, savannas, etc.)."
 }

@@ -4,8 +4,8 @@
   "package": "net.p4pingvin4ik.lightningmod.mixins",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "WorldMixin",
-    "ServerWorldMixin"
+    "ServerWorldMixin",
+    "BiomeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -13,17 +13,13 @@ public class ServerWorldMixin {
             constant = @Constant(intValue = 100000)
     )
     private int modifyLightningChance(int original) {
-        // Ваша логика остается абсолютно правильной
         return ModConfig.get().lightningChance;
     }
     @ModifyConstant(
             method = "tickThunder(Lnet/minecraft/world/chunk/WorldChunk;)V",
-            // Мы целимся в константу типа double со значением 0.01
             constant = @Constant(doubleValue = 0.01)
     )
     private double modifySkeletonHorseChance(double original) {
-        // 'original' здесь равен 0.01
-        // Мы умножаем его на наш множитель из конфига
         return original * ModConfig.get().skeletonHorseChanceMultiplier;
     }
 }
