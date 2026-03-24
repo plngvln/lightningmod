@@ -1,22 +1,25 @@
 package net.p4pingvin4ik.lightningmod.mixins;
 
+import net.minecraft.server.level.ServerLevel;
 import net.p4pingvin4ik.lightningmod.config.ModConfig;
-import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
-@Mixin(ServerWorld.class)
-public class ServerWorldMixin {
+@Mixin(ServerLevel.class)
+public class ServerLevelMixin {
+
     @ModifyConstant(
-            method = "tickThunder(Lnet/minecraft/world/chunk/WorldChunk;)V",
+            method = "tickThunder",
             constant = @Constant(intValue = 100000)
     )
     private int modifyLightningChance(int original) {
-        return ModConfig.get().lightningChance;
+        int chance = ModConfig.get().lightningChance;
+        return chance > 0 ? chance : original;
     }
+
     @ModifyConstant(
-            method = "tickThunder(Lnet/minecraft/world/chunk/WorldChunk;)V",
+            method = "tickThunder",
             constant = @Constant(doubleValue = 0.01)
     )
     private double modifySkeletonHorseChance(double original) {

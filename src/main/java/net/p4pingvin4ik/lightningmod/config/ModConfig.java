@@ -5,7 +5,7 @@ import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.ConfigHolder;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
-import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screens.Screen;
 
 @Config(name = "lightningmod")
 public class ModConfig implements ConfigData {
@@ -29,11 +29,9 @@ public class ModConfig implements ConfigData {
     }
 
     public static ModConfig get() {
-        // Если register() еще не был вызван, INSTANCE будет null.
         if (INSTANCE == null) {
             return new ModConfig();
         }
-        // Если конфиг уже загружен, возвращаем актуальный экземпляр.
         return INSTANCE;
     }
 
