@@ -9,20 +9,20 @@ LightningMod is a Minecraft mod for Fabric that adds dynamic and realistic light
 - **Configurable Lightning Frequency**: Adjust the chance of lightning strikes during a thunderstorm. Make them incredibly frequent or extremely rare using a simple slider. The lower the value, the more often lightning will strike.
 - **Skeleton Horse Control**: Modify the spawn chance of the "Skeleton Trap" horses that appear from lightning strikes. You can reduce the chance or disable them completely.
 - **All-Biome Lightning**: Enable an option to allow lightning to strike in any biome during a thunderstorm, including deserts, savannas, and mesas. No more safe havens from the storm!
-- **In-Game Configuration**: All settings can be easily changed in-game through the ModMenu settings screen, powered by Cloth Config.
+- **In-Game Configuration**: All settings can be easily changed in-game through the ModMenu settings screen, powered by YACL.
 
 ## Requirements
 
 To use this mod, you need to have the following mods installed:
 
 - [Fabric API](https://modrinth.com/mod/fabric-api) (Required)
-- [Mod Menu](https://modrinth.com/mod/modmenu) (Required to access the config screen in-game)
-- [Cloth Config API](https://modrinth.com/mod/cloth-config) (Required for the configuration screen)
+- [YACL](https://modrinth.com/mod/yacl) (Required for the configuration screen)
+- [Mod Menu](https://modrinth.com/mod/modmenu) (Optional, to access the config screen in-game)
 
 ## Installation
 
 1.  Download the latest `.jar` file for LightningMod.
-2.  Download the required dependencies: Fabric API, Mod Menu, and Cloth Config.
+2.  Download the required dependencies: Fabric API, Mod Menu, and YACL.
 3.  Place all the downloaded `.jar` files into your `mods` folder.
 4.  Launch the game. The mod is now installed.
 
@@ -48,7 +48,7 @@ The configuration settings are saved in `config/lightningmod.json` and include t
 
 ## Troubleshooting
 
--   **Mod Not Working / No Changes**: Ensure you have installed all the required dependencies (Fabric API, Mod Menu, Cloth Config). Also, make sure you have saved your changes in the config screen.
+-   **Mod Not Working / No Changes**: Ensure you have installed all the required dependencies (Fabric API, Mod Menu, YACL). Also, make sure you have saved your changes in the config screen.
 -   **Can't Find Config Screen**: You must have [Mod Menu](https://modrinth.com/mod/modmenu) installed to access the configuration screen from the main menu.
 
 ## License

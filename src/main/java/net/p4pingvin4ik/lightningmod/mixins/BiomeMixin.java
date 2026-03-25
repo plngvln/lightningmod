@@ -11,14 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Biome.class)
 public class BiomeMixin {
 
-    @Inject(method = "hasPrecipitation", at = @At("HEAD"), cancellable = true)
-    private void forcePrecipitation(CallbackInfoReturnable<Boolean> cir) {
-        if (ModConfig.get().lightningInAllBiomes) {
-            cir.setReturnValue(true);
-        }
-    }
-
-    @Inject(method = "getPrecipitationAt", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getPrecipitationAt(Lnet/minecraft/core/BlockPos;I)Lnet/minecraft/world/level/biome/Biome$Precipitation;", at = @At("RETURN"), cancellable = true)
     private void makeRainVisibleInAllBiomes(BlockPos pos, int seaLevel, CallbackInfoReturnable<Biome.Precipitation> cir) {
         if (ModConfig.get().lightningInAllBiomes) {
             if (cir.getReturnValue() == Biome.Precipitation.NONE) {
