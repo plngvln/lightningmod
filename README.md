@@ -35,7 +35,7 @@ The configuration settings are saved in `config/lightningmod.json` and include t
 -   `lightningChance` (integer):
     -   Controls the frequency of lightning strikes. A lower number means more frequent lightning.
     -   **Default**: `100000` (Vanilla value)
-    -   **Range**: `100` to `1,000,000`
+    -   **Range**: `1` to `1,000,000`
 
 -   `skeletonHorseChanceMultiplier` (double):
     -   A multiplier for the spawn chance of Skeleton Horse traps from lightning.
