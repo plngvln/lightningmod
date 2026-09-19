@@ -1,16 +1,11 @@
 {
-  "title.lightningmod.config": "Lightning Mod Settings",
-  "category.lightningmod.main": "Main",
-
-  "option.lightningmod.frequency": "Lightning Frequency",
-  "tooltip.lightningmod.frequency": "The chance of a lightning strike during a thunderstorm.\nA LOWER number means MORE frequent lightning. Vanilla: 100,000.",
-
-  "option.lightningmod.skeleton_horse_chance": "Skeleton Trap Chance",
-  "tooltip.lightningmod.skeleton_horse_chance": "Multiplier for the chance of a lightning strike spawning a skeleton horse trap.\n1.0 = Vanilla (100%), 0.5 = Half chance (50%), 0.0 = Disabled.",
-
-  "option.lightningmod.all_biomes": "Lightning in All Biomes",
-  "tooltip.lightningmod.all_biomes": "If enabled, lightning can strike in all biomes\n(deserts, icy plains, etc.) during a thunderstorm.",
-
-  "tooltip.lightningmod.frequency.warning": "WARNING! Too low a value will cause lag and turn your game into HELL! If you really want to set a lower value, make a BACKUP first! Default value: 100000.",
-  "gui.lightningmod.danger": "(DANGEROUS!)"
+  "lightningmod.configuration.title": "Lightning Mod Settings",
+  "lightningmod.configuration.section.lightningmod.server.toml": "Server Settings",
+  "lightningmod.configuration.section.lightningmod.server.toml.title": "Server Settings",
+  "config.lightningmod.lightning_chance": "Lightning Frequency",
+  "config.lightningmod.lightning_chance.tooltip": "The chance denominator for a lightning strike during a thunderstorm. Lower values mean more lightning. Vanilla: 100000.",
+  "config.lightningmod.skeleton_horse_chance_multiplier": "Skeleton Trap Chance Multiplier",
+  "config.lightningmod.skeleton_horse_chance_multiplier.tooltip": "Multiplier for the chance that lightning creates a skeleton horse trap. 1.0 is vanilla, 0.0 disables it.",
+  "config.lightningmod.lightning_in_all_biomes": "Lightning in All Biomes",
+  "config.lightningmod.lightning_in_all_biomes.tooltip": "Allows lightning to strike in biomes where it normally cannot rain."
 }

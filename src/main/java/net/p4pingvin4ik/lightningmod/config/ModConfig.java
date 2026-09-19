@@ -1,67 +1,31 @@
 package net.p4pingvin4ik.lightningmod.config;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.gui.screens.Screen;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.config.ModConfig.Type;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Path;
+public final class ModConfig {
+    private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-public class ModConfig {
+    public static final ModConfigSpec.IntValue LIGHTNING_CHANCE = BUILDER
+            .comment("The chance denominator for a lightning strike during a thunderstorm. Lower values mean more lightning.")
+            .translation("config.lightningmod.lightning_chance")
+            .defineInRange("lightningChance", 100000, 1, 100000);
+    public static final ModConfigSpec.DoubleValue SKELETON_HORSE_CHANCE_MULTIPLIER = BUILDER
+            .comment("Multiplier for the chance of spawning a skeleton horse trap after lightning.")
+            .translation("config.lightningmod.skeleton_horse_chance_multiplier")
+            .defineInRange("skeletonHorseChanceMultiplier", 1.0D, 0.0D, 1.0D);
+    public static final ModConfigSpec.BooleanValue LIGHTNING_IN_ALL_BIOMES = BUILDER
+            .comment("Allow lightning to strike in biomes where it normally cannot rain.")
+            .translation("config.lightningmod.lightning_in_all_biomes")
+            .define("lightningInAllBiomes", false);
 
-    public int lightningChance = 10000;
-    public double skeletonHorseChanceMultiplier = 1.0;
-    public boolean lightningInAllBiomes = false;
+    public static final ModConfigSpec SPEC = BUILDER.build();
 
-    private static ModConfig INSTANCE = null;
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final Path CONFIG_PATH = FabricLoader.getInstance()
-            .getConfigDir()
-            .resolve("lightningmod.json");
-
-
-    public static void register() {
-        INSTANCE = load();
-        save();
+    private ModConfig() {
     }
 
-    public static ModConfig get() {
-        if (INSTANCE == null) {
-            INSTANCE = load();
-        }
-        return INSTANCE;
-    }
-
-    public static Screen getConfigScreen(Screen parent) {
-        return ModConfigScreen.create(parent);
-    }
-
-    public static void save() {
-        ModConfig current = get();
-        try {
-            Files.createDirectories(CONFIG_PATH.getParent());
-            try (Writer writer = Files.newBufferedWriter(CONFIG_PATH)) {
-                GSON.toJson(current, writer);
-            }
-        } catch (IOException ignored) {
-        }
-    }
-
-    private static ModConfig load() {
-        if (!Files.exists(CONFIG_PATH)) {
-            return new ModConfig();
-        }
-
-        try (Reader reader = Files.newBufferedReader(CONFIG_PATH)) {
-            ModConfig parsed = GSON.fromJson(reader, ModConfig.class);
-            return parsed != null ? parsed : new ModConfig();
-        } catch (IOException | JsonParseException ignored) {
-            return new ModConfig();
-        }
+    public static void register(ModContainer modContainer) {
+        modContainer.registerConfig(Type.SERVER, SPEC, "lightningmod-server.toml");
     }
 }

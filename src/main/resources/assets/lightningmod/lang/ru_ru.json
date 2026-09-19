@@ -1,16 +1,11 @@
 {
-  "title.lightningmod.config": "Настройки мода на молнии",
-  "category.lightningmod.main": "Основное",
-
-  "option.lightningmod.frequency": "Частота ударов молнии",
-  "tooltip.lightningmod.frequency": "Шанс удара молнии во время грозы.\nЧем МЕНЬШЕ значение, тем ЧАЩЕ бьют молнии. Ваниль: 100 000.",
-
-  "option.lightningmod.skeleton_horse_chance": "Шанс скелетной ловушки",
-  "tooltip.lightningmod.skeleton_horse_chance": "Множитель шанса появления всадников-скелетов при ударе молнии.\n1.0 = Ванильный шанс (100%), 0.5 = Половина шанса (50%), 0.0 = Отключено.",
-
-  "option.lightningmod.all_biomes": "Дождь и молнии во всех биомах",
-  "tooltip.lightningmod.all_biomes": "Если включено, молнии будут появляться во всех биомах,\n(пустыни, снежные равнины и т.д.).",
-
-  "tooltip.lightningmod.frequency.warning": "ВНИМАНИЕ! Слишком маленькое значение вызовет лаги и превратит игру в АД!\nЕсли вы действительно хотите поставить значения меньше, сделайте БЕКАП!\nСтандартное значение: 100000.",
-  "gui.lightningmod.danger": "(ОПАСНО!)"
+  "lightningmod.configuration.title": "Настройки Lightning Mod",
+  "lightningmod.configuration.section.lightningmod.server.toml": "Настройки сервера",
+  "lightningmod.configuration.section.lightningmod.server.toml.title": "Настройки сервера",
+  "config.lightningmod.lightning_chance": "Частота молний",
+  "config.lightningmod.lightning_chance.tooltip": "Знаменатель вероятности удара молнии во время грозы. Меньшее значение означает больше молний. Ванильное значение: 100000.",
+  "config.lightningmod.skeleton_horse_chance_multiplier": "Множитель шанса ловушки скелета-лошади",
+  "config.lightningmod.skeleton_horse_chance_multiplier.tooltip": "Множитель шанса появления ловушки скелета-лошади от молнии. 1.0 — ванильное значение, 0.0 — отключено.",
+  "config.lightningmod.lightning_in_all_biomes": "Молнии во всех биомах",
+  "config.lightningmod.lightning_in_all_biomes.tooltip": "Позволяет молниям ударять в биомах, где обычно не бывает дождя."
 }

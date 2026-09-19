@@ -11,36 +11,18 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(ServerLevel.class)
 public class ServerLevelMixin {
-
-    @ModifyConstant(
-            method = "tickThunder",
-            constant = @Constant(intValue = 100000)
-    )
+    @ModifyConstant(method = "tickThunder", constant = @Constant(intValue = 100000))
     private int modifyLightningChance(int original) {
-        int chance = ModConfig.get().lightningChance;
-        return chance > 0 ? chance : original;
+        return ModConfig.LIGHTNING_CHANCE.get();
     }
 
-    @ModifyConstant(
-            method = "tickThunder",
-            constant = @Constant(doubleValue = 0.01)
-    )
+    @ModifyConstant(method = "tickThunder", constant = @Constant(doubleValue = 0.01))
     private double modifySkeletonHorseChance(double original) {
-        return original * ModConfig.get().skeletonHorseChanceMultiplier;
+        return original * ModConfig.SKELETON_HORSE_CHANCE_MULTIPLIER.get();
     }
 
-    @Redirect(
-            method = "tickThunder",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/server/level/ServerLevel;isRainingAt(Lnet/minecraft/core/BlockPos;)Z"
-            )
-    )
+    @Redirect(method = "tickThunder", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerLevel;isRainingAt(Lnet/minecraft/core/BlockPos;)Z"))
     private boolean forceLightningInAllBiomes(ServerLevel instance, BlockPos pos) {
-        if (ModConfig.get().lightningInAllBiomes) {
-            return true;
-        }
-
-        return instance.isRainingAt(pos);
+        return ModConfig.LIGHTNING_IN_ALL_BIOMES.get() || instance.isRainingAt(pos);
     }
 }
